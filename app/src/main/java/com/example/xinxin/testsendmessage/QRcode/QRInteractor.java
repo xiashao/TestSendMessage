@@ -17,12 +17,10 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 
 public class QRInteractor {
-    Bitmap bitmap;
     interface OnLoginFinishedListener {
         void onNullError();
         void onSuccess();
     }
-
     public static void QRshow(final ImageView imageView, final OnLoginFinishedListener listener) {
         final Handler handler=new Handler(){
             public void handleMessage (Message msg){
@@ -71,6 +69,7 @@ public class QRInteractor {
             }catch (Exception e) {
                     e.printStackTrace();
                    // finalHandler.obtainMessage(1).sendToTarget();
+                    listener.onNullError();
                 }
         }
         }).start();

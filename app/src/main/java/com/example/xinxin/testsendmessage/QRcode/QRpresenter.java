@@ -16,7 +16,6 @@ public class QRpresenter implements QRInteractor.OnLoginFinishedListener {
             qrView.showProgress();
         }
         QRInteractor.QRshow(imageView, this);
-        qrView.hideProgress();
     }
 
     public void onDestroy() {

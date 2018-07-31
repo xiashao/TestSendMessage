@@ -23,7 +23,11 @@ public class NewMainActivity extends AppCompatActivity implements QRView{
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validateCredentials();
+                try {
+                    validateCredentials();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
         qRpresenter = new QRpresenter(this, new QRInteractor());
@@ -52,9 +56,9 @@ public class NewMainActivity extends AppCompatActivity implements QRView{
     @Override
     public void setQRimage() {
         Toast.makeText(NewMainActivity.this, "获取二维码成功", Toast.LENGTH_SHORT).show();
-
+        progressBar.setVisibility(View.GONE);
     }
-    private void validateCredentials() {
+    private void validateCredentials()  {
         qRpresenter.validateCredentials(imageView);
     }
 }
