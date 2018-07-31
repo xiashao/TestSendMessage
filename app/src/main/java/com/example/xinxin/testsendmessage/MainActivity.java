@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "上传文件":
                 head.set_InfoType(InfoType.SendFile);
-                head.get_pathType(PathType.pub);
                str = "smx.txt§img/008734";
                 //str = "Data//Rows//BASE//smx.txt";
                 Log.e("smx", "文件ok");
