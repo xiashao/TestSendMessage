@@ -104,7 +104,7 @@ public class PkgHead {
         }
     }
 
-    public int get_pathType() {
+    public int get_pathType(PathType pub) {
         return _pathType;
     }
 
