@@ -78,6 +78,6 @@ public class SocketFuncation {
         sendHeadMessage(messageObj);
         sendInfoMessage(messageObj);
         recHeadMessage();
-       return recinfoMessage();
+        return recinfoMessage();
     }
 }

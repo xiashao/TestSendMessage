@@ -9,8 +9,9 @@ import android.widget.Toast;
 import com.example.xinxin.testsendmessage.QRcode.QRInteractor;
 import com.example.xinxin.testsendmessage.QRcode.QRView;
 import com.example.xinxin.testsendmessage.QRcode.QRpresenter;
+import com.example.xinxin.testsendmessage.SearchInfo.SearchView;
 
-public class NewMainActivity extends AppCompatActivity implements QRView{
+public class NewMainActivity extends AppCompatActivity implements QRView,SearchView{
     private ProgressBar progressBar;
     private QRpresenter qRpresenter;
     private ImageView imageView;
@@ -24,7 +25,7 @@ public class NewMainActivity extends AppCompatActivity implements QRView{
             @Override
             public void onClick(View view) {
                 try {
-                    validateCredentials();
+                    getQRcode();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -39,12 +40,12 @@ public class NewMainActivity extends AppCompatActivity implements QRView{
         super.onDestroy();
     }
     @Override
-    public void showProgress() {
+    public void showQRProgress() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void hideProgress() {
+    public void hideQRProgress() {
         progressBar.setVisibility(View.GONE);
     }
 
@@ -52,13 +53,33 @@ public class NewMainActivity extends AppCompatActivity implements QRView{
     public void setImageError() {
         Toast.makeText(NewMainActivity.this, "图片设置失败", Toast.LENGTH_SHORT).show();
     }
-
     @Override
     public void setQRimage() {
         Toast.makeText(NewMainActivity.this, "获取二维码成功", Toast.LENGTH_SHORT).show();
         progressBar.setVisibility(View.GONE);
     }
-    private void validateCredentials() throws InterruptedException {
-        qRpresenter.validateCredentials(imageView);
+    private void getQRcode() throws InterruptedException {
+        qRpresenter.getQRcode(imageView);
+    }
+
+    @Override
+    public void showSearchProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideSearchProgress() {
+        progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void searchError() {
+        Toast.makeText(NewMainActivity.this, "查询失败", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void searchInfo() {
+        Toast.makeText(NewMainActivity.this, "查询成功", Toast.LENGTH_SHORT).show();
+        progressBar.setVisibility(View.GONE);
     }
 }

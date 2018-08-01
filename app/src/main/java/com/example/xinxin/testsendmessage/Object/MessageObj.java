@@ -7,6 +7,9 @@ public class MessageObj{
         this.content = content;
         this.msgType = msgType;
     }
+    public MessageObj(InfoType msgType) {
+        this.msgType = msgType;
+    }
     public void setContent(String content) {
         this.content = content;
     }

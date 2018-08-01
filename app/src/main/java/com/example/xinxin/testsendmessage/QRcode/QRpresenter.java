@@ -1,6 +1,6 @@
 package com.example.xinxin.testsendmessage.QRcode;
 import android.widget.ImageView;
-public class QRpresenter implements QRInteractor.OnLoginFinishedListener {
+public class QRpresenter implements QRInteractor.OnSetFinishedListener {
 
     private QRView qrView;
     private QRInteractor qrInteractor;
@@ -10,9 +10,9 @@ public class QRpresenter implements QRInteractor.OnLoginFinishedListener {
         this.qrInteractor = qrInteractor;
     }
 
-    public void validateCredentials(ImageView imageView) throws InterruptedException {
+    public void getQRcode(ImageView imageView) throws InterruptedException {
         if (qrView != null) {
-            qrView.showProgress();
+            qrView.showQRProgress();
         }
         QRInteractor.QRshow(imageView, this);
     }
@@ -26,7 +26,7 @@ public class QRpresenter implements QRInteractor.OnLoginFinishedListener {
     public void onNullError() {
         if (qrView != null) {
             qrView.setImageError();
-            qrView.hideProgress();
+            qrView.hideQRProgress();
         }
     }
 

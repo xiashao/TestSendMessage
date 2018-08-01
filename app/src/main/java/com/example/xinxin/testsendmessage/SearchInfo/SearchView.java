@@ -16,14 +16,14 @@
  *
  */
 
-package com.example.xinxin.testsendmessage.QRcode;
+package com.example.xinxin.testsendmessage.SearchInfo;
 
-public interface QRView {
-    void showQRProgress();
+public interface SearchView {
+    void showSearchProgress();
 
-    void hideQRProgress();
+    void hideSearchProgress();
 
-    void setImageError();
+    void searchError();
 
-    void setQRimage();
+    void searchInfo();
 }
