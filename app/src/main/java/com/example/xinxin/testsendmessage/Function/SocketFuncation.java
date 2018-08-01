@@ -3,6 +3,10 @@ import android.util.Log;
 import com.example.xinxin.testsendmessage.Object.MessageObj;
 import com.vmeet.netsocket.bean.Constants;
 import com.vmeet.netsocket.bean.PkgHead;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -79,5 +83,23 @@ public class SocketFuncation {
         sendInfoMessage(messageObj);
         recHeadMessage();
         return recinfoMessage();
+    }
+    public void GetFile(MessageObj messageObj) throws IOException {
+        IOfuncition(messageObj);
+        InputStream inputStream = socket.getInputStream();
+        File dir = new File("/sdcard/Mydata"); // 创建文件的存储路径
+        Log.e("smx","文件创建成功");
+        if (!dir.exists()) {
+            dir.mkdir();
+        }
+        String savePath = "/sdcard/Mydata/" + "smx.txt"; // 定义完整的存储路径
+        FileOutputStream file = new FileOutputStream(savePath, false);
+        byte[] buffer = new byte[1024];
+        int size = -1;
+        while ((size = inputStream.read(buffer)) != -1) {
+            file.write(buffer, 0, size);
+        }
+        file.close();
+        inputStream.close();
     }
 }

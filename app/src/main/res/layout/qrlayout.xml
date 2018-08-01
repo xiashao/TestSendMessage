@@ -12,8 +12,15 @@
         android:layout_height="248dp"
         android:src="@drawable/ic_launcher_background" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="15dp"
+        android:text="检索结果"
+        android:id="@+id/seachText"/>
+
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editSearch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="检索" />
@@ -29,6 +36,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="检索" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/button2"
+        android:text="文件"/>
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"

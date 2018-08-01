@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("smx", "文件开始下载了");
                 File dir = new File("/sdcard/Mydata/smx.txt"); // 创建文件的存储路径
                 if (!dir.exists()) {
-                    return;
+                    dir.mkdir();
                 }
                 String savePath = "/sdcard/Mydata/" + "smx.txt"; // 定义完整的存储路径
                 FileOutputStream file = new FileOutputStream(savePath, false);

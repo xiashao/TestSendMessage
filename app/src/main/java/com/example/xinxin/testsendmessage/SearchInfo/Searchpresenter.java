@@ -1,5 +1,6 @@
 package com.example.xinxin.testsendmessage.SearchInfo;
 
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -18,7 +19,7 @@ import android.widget.TextView;
  *    ___)( )(___
  *   (((__) (__)))
  */
-public class Searchpresenter implements SearchInteractor.OnLoginFinishedListener {
+public class Searchpresenter implements SearchInteractor.SeachListener {
 
     private SearchView searchView;
     private SearchInteractor searchInteractor;
@@ -32,6 +33,7 @@ public class Searchpresenter implements SearchInteractor.OnLoginFinishedListener
         if (searchView != null) {
             searchView.showSearchProgress();
         }
+        Log.e("smx","searchStart");
         searchInteractor.Searchshow(textView,editText, this);
     }
 
