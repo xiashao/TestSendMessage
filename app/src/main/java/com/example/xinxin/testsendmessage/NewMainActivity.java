@@ -23,11 +23,7 @@ public class NewMainActivity extends AppCompatActivity implements QRView{
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
                     validateCredentials();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
         });
         qRpresenter = new QRpresenter(this, new QRInteractor());

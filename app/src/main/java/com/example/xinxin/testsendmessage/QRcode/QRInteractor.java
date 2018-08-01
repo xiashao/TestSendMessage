@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.xinxin.testsendmessage.Function.SocketFuncation;
+import com.example.xinxin.testsendmessage.Object.MessageObj;
 import com.vmeet.netsocket.bean.InfoType;
 import com.vmeet.netsocket.bean.PkgHead;
 
@@ -38,14 +40,14 @@ public class QRInteractor {
             @Override
             public void run() {
                 Log.e("smx", "4444444");
-                PkgHead head = new PkgHead();
+                /*PkgHead head = new PkgHead();
                 head.set_InfoType(InfoType.GetQrCode);
                 byte[] bs = null;
-                byte[] bs1 = new byte[30000];
+                byte[] bs1 = new byte[30000];*/
                 String message="123";
-                Socket socket;
+               // Socket socket;
                 try {
-                    try {
+/*                    try {
                         bs = message.getBytes("UTF-8");
                         Log.d("smx", "run: " + message);
                         head.set_InfoLen(bs.length);
@@ -61,14 +63,24 @@ public class QRInteractor {
                     InputStream inputStream = socket.getInputStream();
                     byte[] HeadBytes = new byte[32];
                     int n=inputStream.read(HeadBytes, 0, 32);
-                    int c=inputStream.read(bs1, 0, bs1.length);
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(bs1, 0, c);
+                    int c=inputStream.read(bs1, 0, bs1.length);*/
+                    Log.e("smx","开始try");
+                    MessageObj messageObj=new MessageObj(InfoType.GetQrCode,message);
+                    Log.e("smx","messageObj的类型："+messageObj.getMsgType());
+                    SocketFuncation socketFuncation=new SocketFuncation();
+                    socketFuncation.sendHeadMessage(messageObj);
+                    socketFuncation.sendInfoMessage(messageObj);
+                    Log.e("smx","头和info已经发送");
+                    socketFuncation.recHeadMessage();
+                    Log.e("smx","头接收完毕");
+                    int c=socketFuncation.recinfoMessage();
+                    Log.e("smx","socketFuncation.recinfoMessage:"+socketFuncation.recinfoMessage());
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(socketFuncation.bs1, 0, c);
                     Log.e("smx","图片已经生成");
                     handler.obtainMessage(0,bitmap).sendToTarget();
                     Log.e("smx","hanlder传值失败");
             }catch (Exception e) {
                     e.printStackTrace();
-                   // finalHandler.obtainMessage(1).sendToTarget();
                     listener.onNullError();
                 }
         }
