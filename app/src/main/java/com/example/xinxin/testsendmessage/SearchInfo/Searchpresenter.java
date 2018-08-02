@@ -4,6 +4,8 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.xinxin.testsendmessage.Base.BasePresenter;
+
 /*Created By smx in 2018/8/1
  *心若冰清,天塌不惊; 万变犹定,神怡气静.
  *  .--,       .--,
@@ -19,7 +21,7 @@ import android.widget.TextView;
  *    ___)( )(___
  *   (((__) (__)))
  */
-public class Searchpresenter implements SearchInteractor.SeachListener {
+public class Searchpresenter implements SearchInteractor.SeachListener,BasePresenter {
 
     private SearchView searchView;
     private SearchInteractor searchInteractor;
@@ -31,7 +33,7 @@ public class Searchpresenter implements SearchInteractor.SeachListener {
 
     public void searchStart(EditText editText,TextView textView) throws InterruptedException {
         if (searchView != null) {
-            searchView.showSearchProgress();
+            searchView.showProgress();
         }
         Log.e("smx","searchStart");
         searchInteractor.Searchshow(textView,editText, this);
@@ -46,7 +48,7 @@ public class Searchpresenter implements SearchInteractor.SeachListener {
     public void onNullError() {
         if (searchView != null) {
             searchView.searchError();
-            searchView.hideSearchProgress();
+            searchView.hideProgress();
         }
     }
 

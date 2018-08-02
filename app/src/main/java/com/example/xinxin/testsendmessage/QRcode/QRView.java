@@ -18,11 +18,9 @@
 
 package com.example.xinxin.testsendmessage.QRcode;
 
-public interface QRView {
-    void showQRProgress();
+import com.example.xinxin.testsendmessage.Base.BaseView;
 
-    void hideQRProgress();
-
+public interface QRView extends BaseView{
     void setImageError();
 
     void setQRimage();

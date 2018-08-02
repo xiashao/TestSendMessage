@@ -1,4 +1,5 @@
 package com.example.xinxin.testsendmessage.DownloadFile;
+import com.example.xinxin.testsendmessage.Base.BasePresenter;
 /*Created By smx in 2018/8/1
  *心若冰清,天塌不惊; 万变犹定,神怡气静.
  *  .--,       .--,
@@ -14,7 +15,7 @@ package com.example.xinxin.testsendmessage.DownloadFile;
  *    ___)( )(___
  *   (((__) (__)))
  */
-public class GetFilePresenter implements GetFileInteractor.DownloadFinishedListener{
+public class GetFilePresenter implements GetFileInteractor.DownloadFinishedListener,BasePresenter{
     private GetFilehView getFilehView;
     private GetFileInteractor getFileInteractor;
 
@@ -23,15 +24,16 @@ public class GetFilePresenter implements GetFileInteractor.DownloadFinishedListe
         this.getFileInteractor=getFileInteractor;
     }
 
-    public void downloadStart() throws InterruptedException {
+    public void getFileStart() throws InterruptedException {
         if (getFilehView != null) {
-            getFilehView.showDownlaodProgress();
+            getFilehView.showProgress();
         }
         getFileInteractor.getFileShow(this);
     }
 
+    @Override
     public void onDestroy() {
-        getFilehView = null;
+            getFilehView = null;
     }
 
 
@@ -39,7 +41,7 @@ public class GetFilePresenter implements GetFileInteractor.DownloadFinishedListe
     public void onNullError() {
         if (getFilehView != null) {
             getFilehView.downloadError();
-            getFilehView.hideDownloadProgress();
+            getFilehView.hideProgress();
         }
     }
 
