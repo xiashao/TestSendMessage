@@ -1,19 +1,4 @@
 package com.example.xinxin.testsendmessage;
-/*Created By smx in 2018/7/31
- *心若冰清,天塌不惊; 万变犹定,神怡气静.
- *  .--,       .--,
- * ( (  \.---./  ) )
- *  '.__/o   o\__.'
- *     {=  ^  =}
- *      >  -  <
- *     /       \
- *    //       \\
- *   //|   .   |\\
- *   "'\       /'"_.-~^`'-.
- *      \  _  /--'         `
- *    ___)( )(___
- *   (((__) (__)))
- */
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
